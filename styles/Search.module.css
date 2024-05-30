@@ -1,0 +1,17 @@
+.search {
+	max-width: 450px;
+	height: 100vh;
+	margin: 0 auto;
+	padding: 0 0.5em;
+}
+
+.back__link {
+	display: block;
+	padding-top: 1em;
+	box-sizing: border-box;
+}
+
+.back__icon {
+	width: 30px;
+	font-size: var(--fs-h3);
+}

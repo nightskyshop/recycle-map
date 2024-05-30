@@ -1,0 +1,5 @@
+.noData {
+	opacity: 0.7;
+	color: var(--clr-gray);
+	margin-top: 1em;
+}

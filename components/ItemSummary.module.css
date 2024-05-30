@@ -1,0 +1,19 @@
+.itemSummary {
+	border: 1px solid var(--clr-dark);
+	border-radius: 6px;
+	padding: 1em;
+	margin: 1em 0;
+}
+
+.itemSummary__link {
+	display: flex;
+	justify-content: space-between;
+}
+
+.itemSummary__image {
+	object-fit: cover;
+}
+
+.itemSummary__text {
+	max-width: 300px;
+}
