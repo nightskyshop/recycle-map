@@ -1,6 +1,6 @@
 .main {
 	max-width: 450px;
-	height: 100vh;
+	min-height: 100vh;
 	margin: 0 auto;
 	padding: 0 0.5em;
 }
@@ -19,4 +19,7 @@
 
 .main__allbtn_icon > svg {
 	width: 20px;
+	position: relative;
+	top: 3px;
+	right: 3px;
 }

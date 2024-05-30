@@ -1,13 +1,14 @@
 import { MapMarker, useMap } from "react-kakao-maps-sdk";
 import { useState } from "react";
 
-export default function EventMapMarker({ item }) {
+export default function EventMapMarker({ item, setId }) {
 	const map = useMap();
 	const [isVisible, setIsVisible] = useState(false);
 
 	const handleClick = (e) => {
 		map.panTo(e.getPosition());
 		setIsVisible((prevIsVisible) => !prevIsVisible);
+		setId(item.id);
 	};
 
 	const handleBlur = (e) => {
