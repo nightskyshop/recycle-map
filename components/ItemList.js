@@ -3,7 +3,7 @@ import styles from "./ItemList.module.css";
 
 export default function ItemList({ itemList }) {
 	return (
-		<div>
+		<div className={styles.itemList}>
 			{!itemList ? (
 				<p>로딩 중...</p>
 			) : itemList.length == 0 ? (

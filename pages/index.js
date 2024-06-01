@@ -5,9 +5,10 @@ import { Map } from "react-kakao-maps-sdk";
 import { useEffect, useState } from "react";
 import EventMapMarker from "@/components/EventMapMarker";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faList, faPen } from "@fortawesome/free-solid-svg-icons";
+import { faList } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Post from "@/components/Post";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 export default function Home() {
 	const [location, setLoacation] = useState(null);
@@ -91,6 +92,10 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.main}>
+				<Link className={styles.main__userbtn_icon} href="/login">
+					<FontAwesomeIcon icon={faUser} />
+				</Link>
+
 				<SearchBar />
 
 				<Link className={styles.main__allbtn_icon} href="/items">

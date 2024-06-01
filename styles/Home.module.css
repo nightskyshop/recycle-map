@@ -5,6 +5,17 @@
 	padding: 0 0.5em;
 }
 
+.main__userbtn_icon {
+	display: block;
+	width: 25px;
+	margin: 0 1em 0 auto;
+	padding-top: 1em;
+}
+
+.main__userbtn_icon > svg {
+	font-size: var(--fs-h2);
+}
+
 .main__allbtn_icon {
 	display: block;
 	width: 100%;

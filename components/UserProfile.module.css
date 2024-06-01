@@ -1,0 +1,25 @@
+.user {
+	max-width: 450px;
+	min-height: 100vh;
+	margin: 3em auto 0;
+	padding: 0 0.5em;
+}
+
+.user__image {
+	display: block;
+	border-radius: 100%;
+	margin: 0 auto;
+	object-fit: cover;
+}
+
+.user__username {
+	font-size: var(--fs-h1);
+	text-align: center;
+	margin: 0 auto;
+}
+
+.user__content {
+	font-size: var(--fs-h3);
+	text-align: center;
+	margin: 0 auto;
+}

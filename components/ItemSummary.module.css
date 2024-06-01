@@ -15,5 +15,6 @@
 }
 
 .itemSummary__text {
+	width: 100%;
 	max-width: 300px;
 }
