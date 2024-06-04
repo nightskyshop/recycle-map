@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import axios from "axios";
 
 export default function Search() {
 	const router = useRouter();
@@ -15,23 +16,23 @@ export default function Search() {
 
 	const [itemList, setItemList] = useState(null);
 
+	const getSearchTrash = async () => {
+		const { data } = await axios
+			.post("http://3.39.195.20:8080/search", { trash: searchQuery })
+			.catch((err) => setItemList([]));
+
+		if (data == []) {
+			setItemList([]);
+		} else {
+			setItemList(data);
+		}
+	};
+
 	useEffect(() => {
 		if (searchQuery) {
-			if (searchQuery == "김치") {
-				setItemList([
-					{
-						id: 1,
-						name: `${searchQuery}`,
-						description: "음식물쓰레기",
-						disposal_method:
-							"상해서 먹지 못하는 김치는 김장 양념을 물에 한번 헹군 후 음식물쓰레기로 버려요. 가정에서 배출하는 소량의 김치국물은 하수구로 보...",
-						image:
-							"https://blisgo.com/wp-content/uploads/elementor/thumbs/%EA%B9%80%EC%B9%98-ppkv9je40ttcrgmfl26ptg8zgw36unnjpns2sk95hc.jpg",
-					},
-				]);
-			} else {
-				setItemList([]);
-			}
+			getSearchTrash();
+		} else {
+			setItemList([]);
 		}
 	}, [searchQuery]);
 

@@ -11,7 +11,7 @@ export default function Items() {
 
 	const getItems = async () => {
 		const { data } = await axios
-			.get("http://13.209.4.51:8080/api/data")
+			.get("http://3.39.195.20:8080/api/data")
 			.catch((err) => setItems([]));
 		setItems(data);
 	};

@@ -1,13 +1,12 @@
 import { faCamera, faLeftRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Webcam from "react-webcam";
 import styles from "@/styles/ItemCreate.module.css";
 
 export default function ItemCreate() {
 	const webRef = useRef(null);
-
-	const [mirrored, setMirrored] = useState(true);
+	const [mirrored, setMirrored] = useState(false);
 	const [imageBase64, setImageBase64] = useState("");
 
 	const videoConstraints = {
