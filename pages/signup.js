@@ -1,23 +1,26 @@
 import styles from "@/styles/Form.module.css";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
 export default function Signup() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		const form = e.currentTarget;
+		const email = form.elements.namedItem("email").value;
+		const nickname = form.elements.namedItem("nickname").value;
+		const password = form.elements.namedItem("password").value;
+		console.log(form);
+		console.log(email);
+		console.log(nickname);
+		console.log(password);
 	};
 
 	return (
 		<div className={styles.main}>
-			<Link href="/" className={styles.back__link}>
-				<FontAwesomeIcon icon={faArrowLeft} className={styles.back__icon} />
-			</Link>
-
 			<form className={styles.form} onSubmit={handleSubmit}>
-				<input type="email" placeholder="이메일" />
-				<input type="text" placeholder="닉네임" />
-				<input type="password" placeholder="비밀번호" />
+				<input name="email" type="email" placeholder="이메일" />
+				<input name="nickname" type="text" placeholder="닉네임" />
+				<input name="password" type="password" placeholder="비밀번호" />
 				<button>회원가입</button>
 			</form>
 

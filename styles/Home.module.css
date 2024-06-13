@@ -5,17 +5,6 @@
 	padding: 0 0.5em;
 }
 
-.main__userbtn_icon {
-	display: block;
-	width: 25px;
-	margin: 0 1em 0 auto;
-	padding-top: 1em;
-}
-
-.main__userbtn_icon > svg {
-	font-size: var(--fs-h2);
-}
-
 .main__allbtn_icon {
 	display: block;
 	width: 100%;
@@ -29,6 +18,44 @@
 }
 
 .main__allbtn_icon > svg {
+	width: 20px;
+	position: relative;
+	top: 3px;
+	right: 3px;
+}
+
+.main__rankbtn_icon {
+	display: block;
+	width: 100%;
+	margin-bottom: 0.5em;
+	padding: 1em;
+	border-radius: 10px;
+	box-sizing: border-box;
+	background-color: var(--clr-point);
+	color: var(--clr-light);
+	text-align: center;
+}
+
+.main__rankbtn_icon > svg {
+	width: 20px;
+	position: relative;
+	top: 3px;
+	right: 3px;
+}
+
+.main__createbtn_icon {
+	display: block;
+	width: 100%;
+	margin: 1em 0;
+	padding: 1em;
+	border-radius: 10px;
+	box-sizing: border-box;
+	background-color: var(--clr-blue);
+	color: var(--clr-light);
+	text-align: center;
+}
+
+.main__createbtn_icon > svg {
 	width: 20px;
 	position: relative;
 	top: 3px;

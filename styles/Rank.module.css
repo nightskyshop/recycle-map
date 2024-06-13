@@ -1,0 +1,19 @@
+.rank {
+	max-width: 450px;
+	min-height: 100vh;
+	margin: 0 auto;
+	padding: 0 0.5em;
+}
+
+.back__icon {
+	padding-top: 1em;
+	width: 30px;
+	font-size: var(--fs-h3);
+}
+
+.rank__alltime {
+	margin-top: 2em;
+	padding: 1em;
+	border: 1px solid var(--clr-dark);
+	border-radius: 10px;
+}

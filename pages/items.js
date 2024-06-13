@@ -1,17 +1,17 @@
 import ItemList from "@/components/ItemList";
 import { useEffect, useState } from "react";
 import styles from "@/styles/Items.module.css";
-import axios from "axios";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import axiosInstance from "@/lib/axios";
 
 export default function Items() {
 	const [items, setItems] = useState();
 
 	const getItems = async () => {
-		const { data } = await axios
-			.get("http://3.39.195.20:8080/api/data")
+		const { data } = await axiosInstance
+			.get("/api/data")
 			.catch((err) => setItems([]));
 		setItems(data);
 	};
@@ -22,10 +22,6 @@ export default function Items() {
 
 	return (
 		<div className={styles.items}>
-			<Link href="/" className={styles.back__link}>
-				<FontAwesomeIcon icon={faArrowLeft} className={styles.back__icon} />
-			</Link>
-
 			<ItemList itemList={items} />
 		</div>
 	);

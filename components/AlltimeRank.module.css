@@ -1,0 +1,40 @@
+.rank__table {
+	table-layout: fixed;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.rank__caption {
+	font-size: var(--fs-h2);
+	font-weight: var(--fw-bold);
+	color: var(--clr-blue);
+	margin-bottom: 0.5em;
+}
+
+.user__rank_thead th:nth-child(1) {
+	width: 20%;
+}
+
+.user__rank_thead th:nth-child(2) {
+	width: 20%;
+}
+
+.user__rank_thead th:nth-child(3) {
+	width: 30%;
+}
+
+.user__rank_thead th:nth-child(4) {
+	width: 30%;
+}
+
+.user__rank_image {
+	border-radius: 100%;
+	object-fit: cover;
+	object-position: center top;
+	width: 50px;
+	height: 50px;
+}
+
+.rank__tbody td {
+	text-align: center;
+}

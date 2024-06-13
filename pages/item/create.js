@@ -16,8 +16,13 @@ export default function ItemCreate() {
 	};
 
 	const handleCameraClick = () => {
-		console.log(webRef.current.getScreenshot());
-		setImageBase64(webRef.current.getScreenshot());
+		const image = webRef.current.getScreenshot();
+		setImageBase64(image);
+
+		const latitude = localStorage.getItem("latitude");
+		const longitude = localStorage.getItem("longitude");
+
+		console.log(image, latitude, longitude);
 	};
 
 	const handleMirroredClick = () => {

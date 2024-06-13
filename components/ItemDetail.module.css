@@ -7,6 +7,10 @@
 	margin-bottom: 1em;
 }
 
+.itemDetail__header_text {
+	margin-left: 1em;
+}
+
 .itemDetail__header_text > h1 {
 	font-size: var(--fs-h1);
 }

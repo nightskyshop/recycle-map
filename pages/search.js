@@ -8,6 +8,7 @@ import Head from "next/head";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import axios from "axios";
+import axiosInstance from "@/lib/axios";
 
 export default function Search() {
 	const router = useRouter();
@@ -17,8 +18,8 @@ export default function Search() {
 	const [itemList, setItemList] = useState(null);
 
 	const getSearchTrash = async () => {
-		const { data } = await axios
-			.post("http://3.39.195.20:8080/search", { trash: searchQuery })
+		const { data } = await axiosInstance
+			.post("/search", { trash: searchQuery })
 			.catch((err) => setItemList([]));
 
 		if (data == []) {
@@ -46,10 +47,6 @@ export default function Search() {
 			</Head>
 
 			<div className={styles.search}>
-				<Link href="/" className={styles.back__link}>
-					<FontAwesomeIcon icon={faArrowLeft} className={styles.back__icon} />
-				</Link>
-
 				<SearchBar searchQuery={searchQuery} />
 
 				<hr />

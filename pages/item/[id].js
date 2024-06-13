@@ -1,16 +1,29 @@
 import ItemDetail from "@/components/ItemDetail";
+import axiosInstance from "@/lib/axios";
 import styles from "@/styles/Item.module.css";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export default function Item() {
-	const item = {
-		id: 1,
-		name: "페트병",
-		description: "플라스틱류",
-		disposal_method:
-			"페트병은 내용물을 완전히 비우고 물로 헹구어서 세척한 후 재활용함에 버려야 합니다.",
-		image:
-			"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBqsBCYywWsuST6quJLJZ5fvb_60JyAPMgBg&s",
+	const router = useRouter();
+	const id = router.query["id"];
+	console.log(id);
+
+	const [item, setItem] = useState({});
+
+	const getItem = async () => {
+		const { data } = await axiosInstance.get(`/api/data/${id}`);
+		console.log(data);
+		setItem(data);
 	};
+
+	useEffect(() => {
+		if (id) {
+			getItem();
+		}
+	}, [id]);
+
+	if (!item) return <div>로딩중...</div>;
 
 	return (
 		<div className={styles.item}>

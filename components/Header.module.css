@@ -1,0 +1,29 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 450px;
+	margin: 1em auto;
+	padding: 0 0.5em;
+	box-sizing: border-box;
+}
+
+.header__homebtn_icon {
+	display: block;
+	width: 25px;
+}
+
+.header__homebtn_icon > svg {
+	font-size: var(--fs-h1);
+}
+
+.header__userbtn_icon {
+	display: block;
+	width: 25px;
+	position: relative;
+	right: 5px;
+}
+
+.header__userbtn_icon > svg {
+	font-size: var(--fs-h1);
+}
