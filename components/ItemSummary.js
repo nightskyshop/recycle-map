@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function ItemSummary({ item }) {
 	return (
 		<div className={styles.itemSummary}>
-			<Link href={`/item/${item.id}`} className={styles.itemSummary__link}>
+			<Link href={`/trash/${item.id}`} className={styles.itemSummary__link}>
 				<img
 					src={item.image}
 					alt="Item Photo"

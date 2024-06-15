@@ -1,14 +1,11 @@
 import ItemList from "@/components/ItemList";
 import SearchBar from "@/components/SearchBar";
 import styles from "@/styles/Search.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
-import axios from "axios";
 import axiosInstance from "@/lib/axios";
+import SessionStorage from "@/lib/SessionStorage";
 
 export default function Search() {
 	const router = useRouter();
@@ -19,7 +16,7 @@ export default function Search() {
 
 	const getSearchTrash = async () => {
 		const { data } = await axiosInstance
-			.post("/search", { trash: searchQuery })
+			.post("/trash/search", { word: searchQuery })
 			.catch((err) => setItemList([]));
 
 		if (data == []) {

@@ -10,7 +10,7 @@
 
 .header__homebtn_icon {
 	display: block;
-	width: 25px;
+	width: 30px;
 }
 
 .header__homebtn_icon > svg {
@@ -20,8 +20,6 @@
 .header__userbtn_icon {
 	display: block;
 	width: 25px;
-	position: relative;
-	right: 5px;
 }
 
 .header__userbtn_icon > svg {

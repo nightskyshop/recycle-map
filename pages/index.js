@@ -12,68 +12,41 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Post from "@/components/Post";
+import axiosInstance from "@/lib/axios";
 
 export default function Home() {
 	const [location, setLoacation] = useState(null);
+	const [recycledItems, setRecycledItems] = useState();
 	const [post, setPost] = useState();
 	const [id, setId] = useState();
 
-	const recycledItems = [
-		{
-			id: 1,
-			title: "Mega IT 강남 캠퍼스",
-			address: "서울 강남구 강남대로94길",
-			lat: 37.4994331757035,
-			lng: 127.027938127133,
-		},
-		{
-			id: 2,
-			title: "우리집",
-			address: "서울특별시 양천구 목동중앙남로 16나길 74",
-			lat: 37.5457245393347,
-			lng: 126.86467947697,
-		},
-	];
+	const getRecycledItems = async () => {
+		const { data } = await axiosInstance.get("/today_point");
 
-	const posts = [
-		{
-			id: 1,
-			title: "Mega IT 강남 캠퍼스",
-			address: "서울 강남구 강남대로94길",
-			lat: 37.4994331757035,
-			lng: 127.027938127133,
-			createdAt: "2024년 5월 29일",
-			img: [
-				"https://image.utoimage.com/preview/cp872722/2022/12/202212008462_500.jpg",
-				"https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=9046601&filePath=L2Rpc2sxL25ld2RhdGEvMjAxNC8yMS9DTFM2L2FzYWRhbFBob3RvXzI0MTRfMjAxNDA0MTY=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10004",
-			],
-		},
-		{
-			id: 2,
-			title: "우리집",
-			address: "서울특별시 양천구 목동중앙남로 16나길 74",
-			lat: 37.5457245393347,
-			lng: 126.86467947697,
-			createdAt: "2024년 5월 30일",
-			img: [
-				"https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13262118&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC8yMS9DTFMxMDAwNi82MmZhMWExMy03ZjRmLTQ1NWMtYTZlNy02ZTk2YjhjMjBkYTk=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPgFTcjGd_nLRN20-7zSqLGPxZ0j7aijBR0A&s",
-			],
-		},
-	];
+		setRecycledItems(data);
+	};
 
 	useEffect(() => {
 		const latitude = localStorage.getItem("latitude");
 		const longitude = localStorage.getItem("longitude");
 
 		setLoacation({ latitude, longitude });
+
+		getRecycledItems();
 	}, []);
+
+	const getPost = async () => {
+		const { data } = await axiosInstance.get(`/point/${id}`);
+		setPost(data);
+	};
 
 	useEffect(() => {
 		if (id) {
-			setPost(posts[id - 1]);
+			getPost();
 		}
 	}, [id]);
+
+	if (!recycledItems) return <main className={styles.main}>로딩중...</main>;
 
 	return (
 		<>
@@ -90,7 +63,7 @@ export default function Home() {
 			<main className={styles.main}>
 				<SearchBar />
 
-				<Link className={styles.main__allbtn_icon} href="/items">
+				<Link className={styles.main__allbtn_icon} href="/trashs">
 					<FontAwesomeIcon icon={faList} /> 쓰레기 분리수거 방법 보기
 				</Link>
 
@@ -118,7 +91,7 @@ export default function Home() {
 
 				{post ? <Post post={post} /> : null}
 
-				<Link className={styles.main__createbtn_icon} href="/item/create">
+				<Link className={styles.main__createbtn_icon} href="/trash/create">
 					<FontAwesomeIcon icon={faPen} /> 쓰레기 분리수거 인증 올리기
 				</Link>
 			</main>

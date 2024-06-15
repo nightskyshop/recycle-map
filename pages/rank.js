@@ -7,7 +7,7 @@ export default function Rank() {
 	const [ranking, setRanking] = useState();
 
 	const getRank = async () => {
-		const { data } = await axiosInstance.get("/ranks");
+		const { data } = await axiosInstance.get("/rank");
 		setRanking(data);
 	};
 

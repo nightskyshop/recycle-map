@@ -1,18 +1,35 @@
+import axiosInstance from "@/lib/axios";
 import styles from "@/styles/Form.module.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Signup() {
-	const handleSubmit = (e) => {
+	const router = useRouter();
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		const form = e.currentTarget;
 		const email = form.elements.namedItem("email").value;
 		const nickname = form.elements.namedItem("nickname").value;
 		const password = form.elements.namedItem("password").value;
-		console.log(form);
+
 		console.log(email);
 		console.log(nickname);
 		console.log(password);
+
+		const { data } = await axiosInstance
+			.post("/sign_up", {
+				email,
+				nickname,
+				password,
+			})
+			.catch((err) => {
+				alert(err);
+			});
+		console.log(data);
+
+		if (data) router.push("/login");
 	};
 
 	return (

@@ -1,16 +1,23 @@
+import axiosInstance from "@/lib/axios";
 import styles from "@/styles/Form.module.css";
 import Link from "next/link";
 
 export default function Login() {
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		const form = e.currentTarget;
 		const email = form.elements.namedItem("email").value;
 		const password = form.elements.namedItem("password").value;
-		console.log(form);
+
 		console.log(email);
 		console.log(password);
+
+		const { data } = await axiosInstance.post("/login", { email, password });
+		console.log(data);
+
+		sessionStorage.setItem("accessToken", data.access_token);
+		localStorage.setItem("refreshToken", data.refresh_token);
 	};
 
 	return (

@@ -11,7 +11,7 @@ export default function Items() {
 
 	const getItems = async () => {
 		const { data } = await axiosInstance
-			.get("/api/data")
+			.get("/trash/data")
 			.catch((err) => setItems([]));
 		setItems(data);
 	};

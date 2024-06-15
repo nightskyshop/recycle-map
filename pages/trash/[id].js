@@ -12,7 +12,7 @@ export default function Item() {
 	const [item, setItem] = useState({});
 
 	const getItem = async () => {
-		const { data } = await axiosInstance.get(`/api/data/${id}`);
+		const { data } = await axiosInstance.get(`/trash/data/${id}`);
 		console.log(data);
 		setItem(data);
 	};
