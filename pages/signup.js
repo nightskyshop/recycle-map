@@ -14,10 +14,6 @@ export default function Signup() {
 		const nickname = form.elements.namedItem("nickname").value;
 		const password = form.elements.namedItem("password").value;
 
-		console.log(email);
-		console.log(nickname);
-		console.log(password);
-
 		const { data } = await axiosInstance
 			.post("/sign_up", {
 				email,
@@ -27,7 +23,6 @@ export default function Signup() {
 			.catch((err) => {
 				alert(err);
 			});
-		console.log(data);
 
 		if (data) router.push("/login");
 	};

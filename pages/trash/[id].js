@@ -7,13 +7,11 @@ import { useEffect, useState } from "react";
 export default function Item() {
 	const router = useRouter();
 	const id = router.query["id"];
-	console.log(id);
 
 	const [item, setItem] = useState({});
 
 	const getItem = async () => {
 		const { data } = await axiosInstance.get(`/trash/data/${id}`);
-		console.log(data);
 		setItem(data);
 	};
 

@@ -1,8 +1,11 @@
 import axiosInstance from "@/lib/axios";
 import styles from "@/styles/Form.module.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Login() {
+	const router = useRouter();
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
@@ -10,14 +13,14 @@ export default function Login() {
 		const email = form.elements.namedItem("email").value;
 		const password = form.elements.namedItem("password").value;
 
-		console.log(email);
-		console.log(password);
-
 		const { data } = await axiosInstance.post("/login", { email, password });
-		console.log(data);
 
-		sessionStorage.setItem("accessToken", data.access_token);
-		localStorage.setItem("refreshToken", data.refresh_token);
+		if (data) {
+			sessionStorage.setItem("accessToken", data.access_token);
+			localStorage.setItem("refreshToken", data.refresh_token);
+
+			router.push("/");
+		}
 	};
 
 	return (

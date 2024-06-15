@@ -62,8 +62,6 @@ export default function ItemCreate() {
 		const latitude = localStorage.getItem("latitude");
 		const longitude = localStorage.getItem("longitude");
 
-		console.log(imageURL, latitude, longitude);
-
 		const { data } = axiosInstance.post(
 			"/point",
 			{

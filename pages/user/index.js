@@ -27,7 +27,7 @@ export default function User() {
 						},
 					}
 				);
-				console.log(data);
+
 				SessionStorage.setItem("accessToken", data.access_token);
 			});
 
