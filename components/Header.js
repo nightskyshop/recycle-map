@@ -1,4 +1,4 @@
-import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import styles from "./Header.module.css";
 import Link from "next/link";
@@ -7,9 +7,10 @@ import { useEffect, useState } from "react";
 
 export default function Header() {
 	const [accessToken, setAccessToken] = useState();
+
 	useEffect(() => {
 		setAccessToken(sessionStorage.getItem("accessToken"));
-	}, []);
+	});
 
 	return (
 		<div className={styles.header}>
@@ -17,15 +18,23 @@ export default function Header() {
 				<FontAwesomeIcon icon={faHome} />
 			</Link>
 
-			{accessToken ? (
-				<Link className={styles.header__userbtn_icon} href="/user">
-					<FontAwesomeIcon icon={faUser} />
-				</Link>
-			) : (
-				<Link className={styles.header__userbtn_icon} href="/login">
-					<FontAwesomeIcon icon={faUser} />
-				</Link>
-			)}
+			<div className={styles.header__userbtn_icon}>
+				{accessToken ? (
+					<>
+						<Link href="/user">
+							<FontAwesomeIcon icon={faUser} />
+						</Link>
+
+						<Link className={styles.userbtn__logout} href="/logout">
+							<FontAwesomeIcon icon={faRightToBracket} />
+						</Link>
+					</>
+				) : (
+					<Link href="/login">
+						<FontAwesomeIcon icon={faUser} />
+					</Link>
+				)}
+			</div>
 		</div>
 	);
 }

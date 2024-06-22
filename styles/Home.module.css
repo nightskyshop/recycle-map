@@ -43,6 +43,10 @@
 	right: 3px;
 }
 
+.main__today_point {
+	margin: 0.5em 0 0.25em;
+}
+
 .main__createbtn_icon {
 	display: block;
 	width: 100%;

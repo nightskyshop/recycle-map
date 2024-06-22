@@ -18,10 +18,18 @@
 }
 
 .header__userbtn_icon {
-	display: block;
+	display: flex;
+	width: auto;
+}
+
+.header__userbtn_icon > a {
 	width: 25px;
 }
 
-.header__userbtn_icon > svg {
+.header__userbtn_icon svg {
 	font-size: var(--fs-h1);
+}
+
+.userbtn__logout {
+	margin-left: 1em;
 }

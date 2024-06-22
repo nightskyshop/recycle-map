@@ -21,4 +21,5 @@
 
 .itemDetail__content {
 	font-size: var(--fs-h4);
+	white-space: pre-wrap;
 }

@@ -21,7 +21,7 @@ export default function Home() {
 	const [id, setId] = useState();
 
 	const getRecycledItems = async () => {
-		const { data } = await axiosInstance.get("/today_point");
+		const { data } = await axiosInstance.get("/admin/all_point");
 
 		setRecycledItems(data);
 	};
@@ -46,8 +46,6 @@ export default function Home() {
 		}
 	}, [id]);
 
-	if (!recycledItems) return <main className={styles.main}>로딩중...</main>;
-
 	return (
 		<>
 			<Head>
@@ -63,7 +61,7 @@ export default function Home() {
 			<main className={styles.main}>
 				<SearchBar />
 
-				<Link className={styles.main__allbtn_icon} href="/trashs">
+				<Link className={styles.main__allbtn_icon} href="/trash">
 					<FontAwesomeIcon icon={faList} /> 쓰레기 분리수거 방법 보기
 				</Link>
 
@@ -73,18 +71,25 @@ export default function Home() {
 				</Link>
 
 				{location ? (
-					<Map
-						center={{ lat: location.latitude, lng: location.longitude }}
-						style={{
-							width: "100%",
-							height: "600px",
-						}}
-						level={3}
-					>
-						{recycledItems.map((item) => (
-							<EventMapMarker key={item.id} item={item} setId={setId} />
-						))}
-					</Map>
+					recycledItems ? (
+						<div>
+							<h1 className={styles.main__today_point}>오늘의 포인트: </h1>
+							<Map
+								center={{ lat: location.latitude, lng: location.longitude }}
+								style={{
+									width: "100%",
+									height: "600px",
+								}}
+								level={3}
+							>
+								{recycledItems.map((item) => (
+									<EventMapMarker key={item.id} item={item} setId={setId} />
+								))}
+							</Map>
+						</div>
+					) : (
+						<p>지도 로딩중...</p>
+					)
 				) : (
 					<p>지도 로딩중...</p>
 				)}

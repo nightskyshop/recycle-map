@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./AlltimeRank.module.css";
 
 export default function AlltimeRank({ ranking }) {
@@ -19,13 +20,15 @@ export default function AlltimeRank({ ranking }) {
 					<tr key={index}>
 						<th scope="row">{index + 1}.</th>
 						<td>
-							<img
-								width={40}
-								height={52}
-								src={user.image}
-								alt="Profile Image"
-								className={styles.user__rank_image}
-							/>
+							<Link href={`/user/${user.id}`}>
+								<img
+									width={40}
+									height={52}
+									src={user.image}
+									alt="Profile Image"
+									className={styles.user__rank_image}
+								/>
+							</Link>
 						</td>
 						<td>{user.nickname}</td>
 						<td>{user.point}</td>

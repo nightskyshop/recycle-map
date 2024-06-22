@@ -86,12 +86,16 @@ export default function ItemCreate() {
 		facingMode: "environment",
 	};
 
-	const handleCameraClick = async () => {
+	const handleCameraClick = (e) => {
 		const image = webRef.current.getScreenshot();
 		setImageBase64(image);
 
 		setFile(Base64toFile(image));
 	};
+
+	// const handleCameraOKClick = () => {
+	// 	setFile(Base64toFile(imageBase64));
+	// };
 
 	const handleMirroredClick = () => {
 		setMirrored((prevMirrored) => !prevMirrored);
@@ -105,7 +109,7 @@ export default function ItemCreate() {
 
 	return (
 		<div className={styles.create}>
-			<div className={styles.camera}>
+			<div className={styles.create__camera}>
 				<Webcam
 					mirrored={mirrored}
 					screenshotFormat="image/jpeg"
@@ -132,7 +136,11 @@ export default function ItemCreate() {
 				</div>
 			</div>
 
-			<img alt="IMAGE" src={imageBase64} />
+			{/* <div className={styles.create__confirm}>
+				<img src={imageBase64} alt="Image" />
+				<p>해당 사진으로 업로드하시겠습니까?</p>
+				<button onClick={handleCameraOKClick}>Submit</button>
+			</div> */}
 		</div>
 	);
 }

@@ -9,27 +9,27 @@ export default function User() {
 	const [user, setUser] = useState();
 
 	const getUser = async () => {
-		const { data } = await axiosInstance
-			.get("/protected", {
-				headers: {
-					Authorization: `Bearer ${SessionStorage.getItem("accessToken")}`,
-				},
-			})
-			.catch(async (err) => {
-				// 요청 오류가 있는 경우 작업 수행
-				console.log(err);
-				const { data } = await axios.post(
-					"https://13.125.162.165/refresh",
-					{},
-					{
-						headers: {
-							Authorization: `Bearer ${LocalStorage.getItem("refreshToken")}`,
-						},
-					}
-				);
+		const { data } = await axiosInstance.get("/user/mine", {
+			headers: {
+				Authorization: `Bearer ${SessionStorage.getItem("accessToken")}`,
+			},
+		});
+		// .catch(async (err) => {
+		// 	// 요청 오류가 있는 경우 작업 수행
+		// 	console.log(err);
 
-				SessionStorage.setItem("accessToken", data.access_token);
-			});
+		// 	const { data } = await axios.post(
+		// 		"https://13.125.162.165/refresh",
+		// 		{},
+		// 		{
+		// 			headers: {
+		// 				Authorization: `Bearer ${LocalStorage.getItem("refreshToken")}`,
+		// 			},
+		// 		}
+		// 	);
+
+		// 	SessionStorage.setItem("accessToken", data.access_token);
+		// });
 
 		setUser(data);
 	};

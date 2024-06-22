@@ -13,9 +13,12 @@ export default function Login() {
 		const email = form.elements.namedItem("email").value;
 		const password = form.elements.namedItem("password").value;
 
-		const { data } = await axiosInstance.post("/login", { email, password });
+		const { data, status } = await axiosInstance.post("/login", {
+			email,
+			password,
+		});
 
-		if (data) {
+		if (data && status == 200) {
 			sessionStorage.setItem("accessToken", data.access_token);
 			localStorage.setItem("refreshToken", data.refresh_token);
 
